@@ -11,7 +11,7 @@ router.route('/')
         res.json(status)
     })
     .post(async(req, res) => {
-        const status = req.body;
+        const status = { data: req.body };
         status.time = Date.now()
 
         const insertId = await db.insertStatus(status)
