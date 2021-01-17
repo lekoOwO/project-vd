@@ -18,10 +18,12 @@ morgan.token('remote-addr', function (req) {
 });
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
-app.use(cors({
-    origin: "http://localhost:3000",
-    credentials: true
-}))
+if (config.debug) {
+    app.use(cors({
+        origin: "http://localhost:3000",
+        credentials: true
+    }))
+}
 
 function route(name) {
     const mod = require(`./src/routes/${name}.js`)
