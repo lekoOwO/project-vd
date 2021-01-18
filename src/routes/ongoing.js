@@ -11,13 +11,13 @@ router.route('/')
     .post(async(req, res) => {
         const data = req.body;
         data.time = Date.now()
-        ongoing[data.title] = data;
+        ongoing[data.id] = data;
 
         res.sendStatus(200)
     })
     .delete((async(req, res) => {
         const data = req.body;
-        delete ongoing[data.title];
+        delete ongoing[data.id];
 
         res.sendStatus(204)
     }))
