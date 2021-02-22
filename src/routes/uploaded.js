@@ -19,5 +19,16 @@ router.route('/')
 
         res.sendStatus(200)
     })
+    .delete(async(req, res) => {
+        const deleteId = req.query.id;
+        try {
+            await db.deletedeleteUploaded(deleteId);
+            res.sendStatus(200);
+        } catch (e) {
+            res.status(500).json({
+                error: e
+            })
+        }
+    })
 
 module.exports = router;

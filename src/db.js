@@ -1,4 +1,5 @@
-const MongoClient = require('mongodb').MongoClient;
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
 const config = require("../config.json")
 
 const COLLECTION = {
@@ -60,6 +61,18 @@ async function getUploaded(limit = 10) {
         status.toArray((err, arr) => {
             if (err) reject(err)
             else resolve(arr)
+        })
+    })
+}
+
+async function deleteUploaded(id) {
+    await init;
+
+    const collection = db.collection(COLLECTION.UPLOADED);
+    return new Promise((resolve, reject) => {
+        collection.deleteOne({_id: new mongodb.ObjectID(id)}, function(err, results){
+            if (err) return reject(err)
+            resolve()
         })
     })
 }
