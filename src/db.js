@@ -105,5 +105,6 @@ module.exports = {
     insertUploaded,
     getUploaded,
     insertIPStatus,
-    getIPStatus
+    getIPStatus,
+    deleteUploaded
 }
