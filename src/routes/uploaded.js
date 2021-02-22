@@ -22,11 +22,11 @@ router.route('/')
     .delete(async(req, res) => {
         const deleteId = req.query.id;
         try {
-            await db.deletedeleteUploaded(deleteId);
+            await db.deleteUploaded(deleteId);
             res.sendStatus(200);
         } catch (e) {
             res.status(500).json({
-                error: e
+                error: e.message
             })
         }
     })
